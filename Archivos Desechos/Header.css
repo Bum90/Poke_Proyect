@@ -1,0 +1,32 @@
+.header {
+    background-color: #1a1510;
+    width: 100%;
+    padding: 2px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.Buscador {
+    background-color: #2a2420;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+
+.Buscar-button {
+    background-color: #e8503a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.header-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+}

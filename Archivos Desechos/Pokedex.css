@@ -1,0 +1,25 @@
+.pokedex {
+    background-color: #f7f4f0;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 100vh;
+}
+
+.resultado-busqueda {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    margin: 14px auto;
+    padding: 18px;
+    display: flex;
+}
+
+.coleccion {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+    padding: 16px;
+}

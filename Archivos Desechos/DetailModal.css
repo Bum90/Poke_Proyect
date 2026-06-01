@@ -1,0 +1,58 @@
+.overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 16, 12, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.modal{
+    background: #fff;
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+.detail-img{
+    border-radius: 12px;
+    padding: 10px;
+    flex-shrink: 0;
+}
+.detail-img img{
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+}
+.detail-name{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.detail-num{
+    font-size: 10px;
+    color: #bbb;
+  
+}
+.detail-actions{
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+.btn-edit-detail{
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e8e4e0;
+    background: #fff;
+    cursor: pointer;
+}
+.btn-del-detail{
+
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #ffe0dc;
+    background: #fff8f7;
+    color: #e8503a;
+    cursor: pointer;
+}

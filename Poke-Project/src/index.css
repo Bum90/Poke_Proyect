@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Outfit', sans-serif; background: #f7f4f0; min-height: 100vh; }
+
+/* Header */
+.header { 
+    background: #1a1510; 
+    padding: 20px; 
+    position: sticky; 
+    top: 0; z-index: 10; 
+    width: 100%; 
+}
+    
+.header-inner { 
+    max-width: 700px; 
+    margin: 0 auto; 
+    }
+    
+.Titulo { 
+    color: #fff; 
+    font-size: 20px; 
+    font-weight: 700; 
+    margin-bottom: 12px; 
+}
+
+.Titulo span {
+  color: #888;
+  font-size: 13px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+    
+.busqueda { 
+    display: flex; 
+    gap: 8px; 
+}
+    
+.Buscador { 
+    flex: 1; 
+    background: #2a2420; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 10px 14px; 
+    color: #fff; 
+    font-size: 14px; 
+    font-family: 'Outfit', sans-serif; 
+    outline: none; 
+}
+    
+.Buscador::placeholder { 
+    color: #666; 
+}
+
+.Buscar-button { background: #e8503a; 
+    color: #fff; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 10px 20px; 
+    font-size: 13px; 
+    font-weight: 600; 
+    cursor: pointer; 
+}
+
+/* Pokedex main */
+.pokedex { 
+    max-width: 700px; 
+    margin: 0 auto; 
+    padding: 16px; 
+}
+
+/* Resultado busqueda */
+.resultado-info {
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+}
+
+.resultado-busqueda { 
+    margin-top: 14px; 
+    background: #fff; 
+    border-radius: 16px; 
+    padding: 18px; 
+    display: flex; 
+    gap: 16px; 
+    align-items: center; 
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07); 
+}
+
+.resultado-busqueda img { 
+    width: 80px;
+    height: 80px;
+    object-fit: contain; 
+    border-radius: 12px; 
+    padding: 8px; 
+}
+
+/* Coleccion */
+.coleccion { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); 
+    gap: 12px; margin-top: 18px; 
+    }
+    
+/* PokeCard */
+.poke-card { background: #fff; 
+   border-radius: 16px; 
+   overflow: hidden;
+   box-shadow: 0 1px 8px rgba(0,0,0,0.06); 
+   transition: transform 0.15s; 
+}
+   
+.poke-card:hover { 
+    transform: translateY(-2px); 
+}
+    
+.poke-card-top { padding: 14px 14px 8px; 
+    display: flex; 
+    justify-content: center; 
+    cursor: pointer; 
+}
+
+.poke-card-top img { 
+    width: 76px; 
+    height: 76px; 
+    object-fit: contain; 
+}
+
+.poke-card-body { 
+    padding: 8px 12px 12px; 
+}
+
+.poke-num { 
+    font-size: 10px; 
+    color: #000; 
+    font-family: monospace; 
+}
+    
+.poke-name { 
+    font-weight: 600; 
+    font-size: 14px; 
+    text-transform: capitalize; 
+    margin-bottom: 2px; 
+    font-family: 'Outfit', sans-serif;
+}
+    
+.card-action { 
+    display: flex; 
+    gap: 6px; 
+    margin-top: 8px; 
+}
+    
+.btn-edit { 
+    flex: 1; 
+    font-size: 13px; 
+    padding: 6px 012px; 
+    border-radius: 8px; 
+    border: 1px solid #e8e4e0; 
+    background: #fff; 
+    cursor: pointer; 
+    color: #555; 
+}
+
+.btn-del { 
+    font-size: 13px; 
+    padding: 6px 12px; 
+    border-radius: 8px; 
+    border: 1px solid #ffe0dc; 
+    background: #fff8f7; 
+    cursor: pointer; 
+    color: #e8503a; 
+}
+
+/* Empty state */
+.empty { 
+    margin-top: 60px;
+     text-align: center;
+}
+      
+.empty p:first-child { 
+    font-size: 48px; 
+    opacity: 0.12;
+    margin-bottom: 10px;
+}
+     
+.empty p:last-child { 
+    font-size: 14px; 
+    color: #bbb; 
+}
+
+/* Modales */
+.overlay { 
+    position: fixed; inset: 0; 
+    background: rgba(20,16,12,0.6); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 100; 
+    padding: 16px; 
+}
+    
+.modal { 
+    background: #fff; 
+    border-radius: 20px; 
+    padding: 24px; 
+    max-width: 360px; 
+    width: 100%; 
+    max-height: 85vh; 
+    overflow-y: auto;
+}
+
+.modal h2 { 
+    font-size: 17px; 
+    font-weight: 700; 
+    margin-bottom: 18px; 
+}
+    
+.modal label { 
+    font-size: 11px; 
+    font-weight: 600; 
+    color: #aaa; 
+    letter-spacing: 0.05em; 
+    display: block; 
+    margin-bottom: 6px;
+}
+
+.modal input, .modal textarea { 
+    width: 100%; 
+    border: 1.5px solid #e8e4e0; 
+    border-radius: 10px; 
+    padding: 10px 12px; 
+    font-size: 14px; 
+    outline: none; 
+    resize: none; 
+    margin-bottom: 14px; 
+}
+
+.modal-actions { 
+    display: flex; 
+    gap: 8px; 
+}
+
+.btn-cancel { flex: 1; 
+    padding: 10px; 
+    border-radius: 10px;
+     border: 1px solid #e8e4e0; 
+     background: #fff; 
+     cursor: pointer; 
+     font-size: 13px; 
+}
+
+.btn-save { 
+    flex: 1; 
+    padding: 10px; 
+    border-radius: 10px; 
+    border: none; 
+    background: #1a1510; 
+    color: #fff; 
+    cursor: pointer; 
+    font-size: 13px; 
+    font-weight: 600; 
+}
+
+/* Detail Modal */
+.detail-img { 
+    border-radius: 12px; 
+    padding: 10px 14px; 
+}
+
+.detail-num { 
+    font-size: 10px; 
+    color: #bbb; 
+    font-family: monospace; 
+    margin-bottom: 2px; 
+}
+
+.detail-name { 
+    font-weight: 700; 
+    font-size: 20px; 
+    text-transform: capitalize; 
+    margin-bottom: 4px; 
+}
+
+.detail-actions { 
+    display: flex; 
+    gap: 8px; 
+    margin-top: 14px;
+ }
+    
+.btn-close { 
+    flex: 1; 
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 1px solid #e8e4e0; 
+    background: #fff; 
+    cursor: pointer; 
+    font-size: 13px; 
+}
+
+.btn-edit-detail { 
+    flex: 1; 
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 1px solid #e8e4e0; 
+    background: #fff; 
+    cursor: pointer; 
+    font-size: 13px; 
+}
+
+.btn-del-detail {
+ padding: 10px 14px; 
+ border-radius: 10px; 
+ border: 1px solid #ffe0dc; 
+ background: #fff8f7; 
+ cursor: pointer; 
+ font-size: 13px; color: #e8503a; 
+}
+
+/* Stats */
+.stat-row { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    margin-bottom: 5px; 
+}
+    
+.stat-val { 
+    font-size: 10px; 
+    width: 24px; 
+    text-align: right; 
+    color: #888; 
+    font-family: monospace; 
+    flex-shrink: 0; 
+}
+    
+.stat-bar { 
+    flex: 1; 
+    height: 5px; 
+    background: #f0ede8; 
+    border-radius: 3px; 
+    overflow: hidden; 
+}
+    
+.stat-fill { 
+    height: 100%; 
+    border-radius: 3px; 
+}
+
+.stat-name { 
+font-size: 10px; 
+width: 60px; 
+color: #aaa; 
+}
+
+.btn-add {
+  background: #1a1510;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.result-name {
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+/* Badge tipos */
+.badge { 
+    font-size: 11px; 
+    font-weight: 600; 
+    padding: 3px 10px; 
+    border-radius: 20px; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 4px; 
+    background: #fff3c4; 
+    color: #a67c00; 
+    margin-right: 4px;
+    margin-top: 4px;
+    width: fit-content
+}
+
+.result-num {
+    font-size: 11px; 
+    color: #000; 
+    font-family: monospace; 
+}

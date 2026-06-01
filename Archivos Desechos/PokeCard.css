@@ -1,0 +1,42 @@
+/* Tomy hace esta parte ✅*/
+.poke-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 0.15s;
+}
+.poke-card:hover {
+  transform: translateY(-2px);
+  
+}
+.poke-card-top{
+    padding: 14px 14px 8px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.poke-image{
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+}
+.poke-card-body{
+    padding: 8px 12px 12px;
+}
+.poke-num{
+    font-size: 10px;
+    color: #ccc;
+
+}
+.poke-name{
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.card-actions{
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+

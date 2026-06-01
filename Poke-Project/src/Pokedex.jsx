@@ -48,15 +48,23 @@ function verDetalle(id) {
 }
 
   return (
-    <div>
-        <Header onBuscar={buscarPokemon}/>
+  <>
+    <Header onBuscar={buscarPokemon} totalCapturados={coleccion.length}/>
+      <div className="pokedex">
         {resultadoBusqueda && (
-          <div>
-              <img src={resultadoBusqueda.imagen}/>
-              <p>{resultadoBusqueda.nombre}</p>
-              <button onClick={agregarPokemon}>Capturar Pokemon</button>
-          </div>
+          <div className="resultado-busqueda">
+    <img src={resultadoBusqueda.imagen}/>
+    <div className="resultado-info">
+        <p className="result-num">#{resultadoBusqueda.id}</p>
+        <p className="result-name">{resultadoBusqueda.nombre}</p>
+        {resultadoBusqueda.tipo.map((t) => (
+            <span key={t.type.name} className="badge">{t.type.name}</span>
+        ))}
+        <button className="btn-add" onClick={agregarPokemon}>+ Agregar a colección</button>
+    </div>
+</div>
         )}
+        <div className="coleccion">
           {coleccion.map(pokemon => (
             <PokeCard
               key={pokemon.id}
@@ -66,6 +74,13 @@ function verDetalle(id) {
               onVerDetalle={verDetalle}
             />
           ))}
+          </div>
+          {coleccion.length === 0 && (
+            <div className="empty">
+              <p>◎</p>
+              <p>Buscá un pokémon arriba para empezar</p>
+            </div>
+          )}
           {pokemonEditado && (
           <EditModal
             pokemon={pokemonEditado}
@@ -82,6 +97,7 @@ function verDetalle(id) {
             />
         )}
     </div>
+    </>
   )}
 
 export default Pokedex 
