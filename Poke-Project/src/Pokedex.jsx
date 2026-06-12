@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import PokeCard from './components/PokeCard'
 import EditModal from "./components/EditModal";
 import DetailModal from "./components/DetailModal";
+import SugeridosCard from './components/SugeridosCard';
 
 const coloresTipo = {
   fire: "#FFDDC1",
@@ -31,6 +32,24 @@ function Pokedex() {
   const [resultadoBusqueda, setResultadoBusqueda] = useState(null);
   const [pokemonEditado, setPokemonEditado] = useState(null);
   const [pokemonDetalles, setPokemonDetalles] = useState(null);
+  const [sugeridos, setSugeridos] = useState([]);
+
+async function cargarSugeridos() {
+  const ids = Array.from({length: 8}, () => Math.floor(Math.random() * 898) + 1)
+  const resultados = await Promise.all(
+    ids.map(id => fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json()))
+  )
+  setSugeridos(resultados.map(d => ({
+    id: d.id,
+    nombre: d.name,
+    imagen: d.sprites.front_default,
+    tipo: d.types
+  })))
+}
+
+  useEffect(() => {
+    cargarSugeridos()
+  }, [])
 
   async function buscarPokemon(nombre) {
     const respuesta = await fetch (`https://pokeapi.co/api/v2/pokemon/${nombre}`);
@@ -99,6 +118,18 @@ function verDetalle(id) {
               onVerDetalle={verDetalle}
             />
           ))}
+          </div>
+          <div className="sugeridos">
+              <h3>Pokémon sugeridos</h3>
+              <div className="coleccion">
+                {sugeridos.map(pokemon => (
+              <SugeridosCard
+                key={pokemon.id}
+                pokemon={pokemon}
+                onCapturar={(pokemon) => setColeccion([...coleccion, pokemon])}
+                />
+            ))}
+            </div>
           </div>
           {coleccion.length === 0 && (
             <div className="empty">
