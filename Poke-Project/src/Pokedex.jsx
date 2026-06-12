@@ -5,6 +5,27 @@ import PokeCard from './components/PokeCard'
 import EditModal from "./components/EditModal";
 import DetailModal from "./components/DetailModal";
 
+const coloresTipo = {
+  fire: "#FFDDC1",
+  water: "#C1E1FF",
+  electric: "#FFF3C4",
+  grass: "#C1FFD7",
+  poison: "#E8C1FF",
+  normal: "#F0F0F0",
+  flying: "#C1ECFF",
+  psychic: "#FFC1E3",
+  bug: "#D7FFC1",
+  rock: "#E8E0C1",
+  ground: "#F5E6C1",
+  ice: "#C1F5FF",
+  dragon: "#C1C8FF",
+  ghost: "#D4C1FF",
+  dark: "#C8C1C1",
+  steel: "#D4D4E8",
+  fairy: "#FFC1F0",
+  fighting: "#FFC1C1",
+}
+
 function Pokedex() {
   const [coleccion, setColeccion] = useState([]);
   const [resultadoBusqueda, setResultadoBusqueda] = useState(null);
@@ -53,13 +74,17 @@ function verDetalle(id) {
       <div className="pokedex">
         {resultadoBusqueda && (
           <div className="resultado-busqueda">
+  <div style={{ background: coloresTipo[resultadoBusqueda.tipo[0].type.name] || "#f0f0f0", borderRadius: "12px", padding: "8px" }}>
     <img src={resultadoBusqueda.imagen}/>
+  </div>
     <div className="resultado-info">
         <p className="result-num">#{resultadoBusqueda.id}</p>
         <p className="result-name">{resultadoBusqueda.nombre}</p>
+      <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
         {resultadoBusqueda.tipo.map((t) => (
-            <span key={t.type.name} className="badge">{t.type.name}</span>
-        ))}
+    <span key={t.type.name} className="badge" style={{ background: coloresTipo[t.type.name] || "#f0f0f0" }}>{t.type.name}</span>
+))}
+      </div>
         <button className="btn-add" onClick={agregarPokemon}>+ Agregar a colección</button>
     </div>
 </div>

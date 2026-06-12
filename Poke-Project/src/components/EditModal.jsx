@@ -3,18 +3,18 @@ import { useState} from "react";
 
 
 function EditModal({pokemon, onGuardar, onCerrar}) {
-     const [apodo, setApodo] = useState("");
-     const [nota, setNota] = useState("");
+     const [apodo, setApodo] = useState(pokemon.apodo || "");
+     const [nota, setNota] = useState(pokemon.nota || "");
     return (
              <div className="overlay">
                <div className="modal">
                     <h2>Edit Pokemon</h2>
                     <label>APODO</label>
-                    <input onChange={(e) => setApodo(e.target.value)} />
+                    <input value={apodo} onChange={(e) => setApodo(e.target.value)} />
                     <label>NOTA</label>
-                    <textarea onChange={(e) => setNota(e.target.value)}></textarea>
-                    <div className="modal-actions">
-                    <button className="btn-save" onClick={() => onGuardar({apodo,nota})}>GUARDAR</button>
+                    <textarea value={nota} onChange={(e) => setNota(e.target.value)}></textarea>
+                    <div  className="modal-actions">
+                    <button className="btn-save" onClick={() => onGuardar(pokemon.id,{apodo,nota})}>GUARDAR</button>
                     <button className="btn-cancel" onClick={onCerrar}>CERRAR</button>
                     </div>
                 </div>
